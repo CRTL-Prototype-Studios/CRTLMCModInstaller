@@ -7,6 +7,8 @@ internal class Program
     static void Main(string[] args)
     {
         string id = "xYL9nIiR";
-        InstallationManager.DownloadFileFromUrl($"https://api.modrinth.com/v2/version/{id}", "Test");
+        Console.WriteLine(Directory.GetCurrentDirectory());
+        InstallationManager.DownloadFileFromUrl($"https://api.modrinth.com/v2/version/{id}",
+            Path.Join(Directory.GetCurrentDirectory(), "hello.jar"));
     }
 }

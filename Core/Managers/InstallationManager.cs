@@ -11,7 +11,7 @@ public class InstallationManager
             try
             {
                 Console.WriteLine("Downloading file from: " + url);
-                client.DownloadFileAsync(new Uri(url), outputPath);
+                client.DownloadFile(new Uri(url), outputPath);
                 Console.WriteLine("File downloaded successfully!");
             }
             catch (WebException ex)
