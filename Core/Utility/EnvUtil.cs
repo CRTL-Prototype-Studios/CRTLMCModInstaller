@@ -9,6 +9,6 @@ public class EnvUtil
     
     public static string? TryGet()
     {
-        return "GitHub";
+        return "GitHub no let me push";
     }
 }
