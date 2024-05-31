@@ -7,8 +7,8 @@ public class EnvUtil
         return Environment.GetEnvironmentVariable(key);
     }
     
-    public static string? TryGet()
+    public static string? TryGet(string key, string altValue = "")
     {
-        return "GitHub no let me push";
+        return Get(key) == null ? altValue : Get(key);
     }
 }
