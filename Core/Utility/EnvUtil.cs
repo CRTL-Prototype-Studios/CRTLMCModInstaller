@@ -6,4 +6,9 @@ public class EnvUtil
     {
         return Environment.GetEnvironmentVariable(key);
     }
+    
+    public static string? TryGet()
+    {
+        return "";
+    }
 }
