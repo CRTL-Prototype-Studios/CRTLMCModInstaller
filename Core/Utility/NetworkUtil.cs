@@ -22,7 +22,7 @@ public class NetworkUtil
             new HttpRequestMessage(new HttpMethod(method == RequestMethod.Get ? "GET" : "POST"), requestUri);
         
         if (withUserAgent)
-            msg.Headers.Add("User-Agent", EnvUtil.TryGet("USER_AGENT_HEADER_VALUE", "Type-32/CRTLMCModInstaller/0.1.0 (type32alt@outlook.com)"));
+            msg.Headers.Add("User-Agent", EnvUtil.TryGet("USER_AGENT_HEADER_VALUE", "Type-32/CRTLMCModInstaller/0.1.0-alpha (type32alt@outlook.com)"));
 
         return msg;
     }
