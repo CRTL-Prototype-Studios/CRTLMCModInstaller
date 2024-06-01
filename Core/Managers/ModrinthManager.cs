@@ -1,4 +1,5 @@
 using System.Net;
+using CRTLMCModInstaller.Core.Foundation.Modrinth;
 using CRTLMCModInstaller.Core.References;
 using CRTLMCModInstaller.Core.Utility;
 
@@ -31,6 +32,44 @@ public class ModrinthManager
             HttpRequestMessage req = NetworkUtil.BuildRequest(NetworkUtil.RequestMethod.Get, queryUri);
             
             HttpResponseMessage res = await client.SendAsync(req);
+
+            return res.Content;
+        }
+    }
+
+    public static async Task<HttpContent> SearchProjects(string query, ModrinthFoundations.ModrinthCategories mdlCategories, string[] modMcVersions)
+    {
+        using (HttpClient client = new HttpClient())
+        {
+            client.BaseAddress = BaseUrl;
+
+            string versions = "";
+            foreach (string i in modMcVersions)
+            {
+                versions += $"\"versions:{i}\"";
+            }
+            
+            Uri queryUri = new NetworkUtil.QueryBuilder(new Uri("search"))
+                .AddQuery("query", query)
+                .AddQuery("facets",$"[[\"categories:{ModrinthFoundations.GetCategoryString(mdlCategories)}\"],[{versions}]]")
+                .Get();
+            HttpRequestMessage req = NetworkUtil.BuildRequest(NetworkUtil.RequestMethod.Get, queryUri);
+            
+            HttpResponseMessage res = await client.SendAsync(req);
+
+            return res.Content;
+        }
+    }
+
+    public static async Task<HttpContent> GetProject(string projectId)
+    {
+        using (HttpClient client = new HttpClient())
+        {
+            client.BaseAddress = BaseUrl;
+            HttpRequestMessage mes = NetworkUtil.BuildRequest(NetworkUtil.RequestMethod.Get,
+                new Uri(Path.Join("project", projectId)));
+
+            HttpResponseMessage res = await client.SendAsync(mes);
 
             return res.Content;
         }
