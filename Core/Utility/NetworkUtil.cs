@@ -18,6 +18,7 @@ public class NetworkUtil
 
     public static HttpRequestMessage BuildRequest(RequestMethod method, Uri requestUri, bool withUserAgent = true)
     {
+        
         HttpRequestMessage msg =
             new HttpRequestMessage(new HttpMethod(method == RequestMethod.Get ? "GET" : "POST"), requestUri);
         
