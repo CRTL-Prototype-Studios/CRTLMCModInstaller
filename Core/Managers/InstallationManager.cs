@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 
 namespace CRTLMCModInstaller.Core;
 
@@ -20,5 +21,11 @@ public class InstallationManager
                 Console.WriteLine(ex.Message);
             }
         }
+    }
+
+    [Obsolete("Currently, there is no cross platform solution to this")]
+    public static string OpenAndFetchDirectoryDialog()
+    {
+        return "";
     }
 }
